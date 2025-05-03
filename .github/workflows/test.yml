@@ -1,0 +1,41 @@
+name: E2E Selenium CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  e2e-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install Node.js dependencies
+        run: |
+          cd src
+          npm install
+
+      - name: Start Vite Dev Server
+        run: |
+          cd src
+          nohup npm run dev &
+          sleep 5
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.11
+
+      - name: Install Python dependencies
+        run: pip install selenium
+
+      - name: Run Selenium test
+        run: python tests/test_osap_flow.py
