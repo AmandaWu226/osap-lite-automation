@@ -1,12 +1,72 @@
-# React + Vite
+# OSAP Lite: Ontario Student Aid Simulator
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A lightweight React-based simulation of the Ontario Student Assistance Program (OSAP) part-time application system. Designed for demonstrating UI automation, form workflows, and CI integration.
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+* Multi-step application form mimicking OSAP (school info, marital status, income, summary)
+* Real-time validation and conditional fields
+* React Context for global form state management
+* End-to-End (E2E) testing using Selenium WebDriver (Python)
+* GitHub Actions CI/CD: Auto-run tests on every push
+* Tailwind CSS for layout styling
 
-## Expanding the ESLint configuration
+## 📂 Project Structure
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```
+osap-lite-automation/
+├── public/
+├── src/
+│   ├── assets/
+│   ├── pages/                  # Step1School, Step2Marital, Step3Income, SummaryPage
+│   ├── App.jsx
+│   ├── AppContext.jsx         # Global state for form
+│   ├── AppLayout.jsx
+│   └── main.jsx
+├── tests/
+│   └── test_osap_flow.py      # Selenium E2E test
+├── .github/workflows/
+│   └── e2e.yml                # GitHub Actions CI config
+├── tailwind.config.js
+├── postcss.config.js
+└── README.md
+```
+
+## 🚩 Technologies Used
+
+* **Frontend**: React + Vite + Tailwind CSS
+* **Testing**: Selenium (Python)
+* **CI/CD**: GitHub Actions
+
+## 🎓 Usage
+
+### Run locally
+
+```bash
+git clone https://github.com/your-username/osap-lite-automation
+cd osap-lite-automation
+npm install
+npm run dev
+```
+
+### Run tests locally
+
+```bash
+# Ensure your frontend is running locally (default: http://localhost:5174)
+cd tests
+python test_osap_flow.py
+```
+
+### CI/CD
+
+On every push to `main`, GitHub Actions:
+
+* Installs dependencies
+* Launches local web server
+* Runs Selenium E2E test
+
+## 💼 Author
+
+Amanda Wu
+
+
