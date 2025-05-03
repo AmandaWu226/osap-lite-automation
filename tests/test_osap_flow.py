@@ -12,10 +12,13 @@ import sys
 BASE_URL = sys.argv[1] if len(sys.argv) > 1 else "http://localhost:5174"
 print(f"Testing application at: {BASE_URL}")
 
-# Set up the browser options
 options = Options()
-# options.add_argument("--headless")  # Keep the browser visible
+# options.add_argument("--headless")
+options.add_argument("--disable-dev-shm-usage")
+options.add_argument("--no-sandbox")
+options.add_argument("--disable-gpu")
 options.add_argument("--window-size=1920,1080")
+options.add_argument("--user-data-dir=/tmp/chrome-user-data") 
 
 # Initialize the browser
 driver = webdriver.Chrome(options=options)
